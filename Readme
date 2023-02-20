@@ -1,1 +1,2 @@
-Data Exploration of Indian Census 2011
+In this project, I had generated few insighst from the raw data of 2011 India's Census at state level. The exploration is done in MySQL.
+Data present in this repository is in .csv format
