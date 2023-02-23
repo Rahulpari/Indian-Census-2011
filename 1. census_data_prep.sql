@@ -106,3 +106,5 @@ UPDATE census.data SET illiterate = population - literate;
 UPDATE census.data SET male = population/(1+sex_ratio/1000);
 UPDATE census.data SET female = population - male;
 UPDATE census.data SET Prev_Population = population/(1+growth/100);
+
+DESCRIBE census.data;
