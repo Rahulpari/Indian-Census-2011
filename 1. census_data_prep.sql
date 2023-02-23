@@ -66,10 +66,10 @@ DESCRIBE census.data;
 DELETE FROM census.data WHERE population IS NULL;
 
 -- Update table with literacy_sex_growth data --
-DROP PROCEDURE IF EXISTS drop_literacy_sex_growth_data;
+DROP PROCEDURE IF EXISTS census.drop_literacy_sex_growth_data;
 DELIMITER //
 
-CREATE PROCEDURE drop_literacy_sex_growth_data() BEGIN
+CREATE PROCEDURE census.drop_literacy_sex_growth_data() BEGIN
 IF EXISTS (SELECT * FROM information_schema.COLUMNS WHERE table_schema = 'census' AND COLUMN_NAME = 'Literate') 
 THEN ALTER TABLE census.data DROP COLUMN Literate;
 END IF;
@@ -99,7 +99,7 @@ ALTER TABLE census.data ADD COLUMN Prev_Population INTEGER;
 END//
 DELIMITER ;
 
-CALL drop_literacy_sex_growth_data;
+CALL census.drop_literacy_sex_growth_data;
 
 UPDATE census.data SET literate = literacy/100 * population;
 UPDATE census.data SET illiterate = population - literate;
